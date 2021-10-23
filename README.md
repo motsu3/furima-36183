@@ -5,18 +5,17 @@
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | nickname              | string     | null: false                    |
-| email                 | string     | null: false                    |
+| email                 | string     | null: false, unique: true      |
 | encrypted_password    | string     | null: false                    |
 | last_name             | string     | null: false                    |
 | first_name            | string     | null: false                    |
 | last_name_kana        | string     | null: false                    |
 | first_name_kana       | string     | null: false                    |
-| birthday              | integer    | null: false                    |
+| birthday              | date       | null: false                    |
 
 ### アソシエーション
 
 - has_many :items
-- has_one  :address
 - has_one  :card
 
 
@@ -27,10 +26,10 @@
 | --------------------- | ---------- | ------------------------------ |
 | name                  | string     | null: false                    |
 | introduction          | text       | null: false                    |
-| category              | string     | null: false                    |
+| category_id           | integer    | null: false                    |
 | condition             | string     | null: false                    |
 | delivery_fee          | integer    | null: false                    |
-| shipping_area         | string     | null: false                    |
+| shipping_area_id      | integer    | null: false                    |
 | shipping_days         | integer    | null: false                    |
 | price                 | integer    | null: false                    |
 | user_id               | references | null: false, foreign_key: true |
@@ -38,6 +37,7 @@
 ### アソシエーション
 
 - belongs_to :user
+- has_one :card
 
 
 
@@ -47,7 +47,7 @@
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| postal_code           | integer    | null: false                    |
+| postal_code           | string     | null: false                    |
 | prefecture            | string     | null: false                    |
 | city                  | string     | null: false                    |
 | address_detail        | string     | null: false                    |
@@ -57,7 +57,7 @@
 
 ### アソシエーション
 
-- belongs_to :user
+- belongs_to :card
 
 
 
@@ -67,12 +67,10 @@
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| card_id               | string     | null: false                    |
-| expiration_month      | integer    | null: false                    |
-| expiration_year       | integer    | null: false                    |
-| security_code         | integer    | null: false                    |
+| item_id               | references | null: false, foreign_key: true |
 | user_id               | references | null: false, foreign_key: true |
 
 ### アソシエーション
 
-- belongs_to :user
+- has_one  :address
+- belongs_to :item
