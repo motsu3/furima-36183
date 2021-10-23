@@ -32,7 +32,7 @@
 | shipping_area_id      | integer    | null: false                    |
 | shipping_days_id      | integer    | null: false                    |
 | price                 | integer    | null: false                    |
-| user_id               | references | null: false, foreign_key: true |
+| user                  | references | null: false, foreign_key: true |
 
 ### アソシエーション
 
@@ -53,7 +53,7 @@
 | address_detail        | string     | null: false                    |
 | building_name         | string     |                                |
 | phone_number          | string     | null: false                    |
-| card_id               | references | null: false, foreign_key: true |
+| card                  | references | null: false, foreign_key: true |
 
 ### アソシエーション
 
@@ -67,8 +67,8 @@
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
-| item_id               | references | null: false, foreign_key: true |
-| user_id               | references | null: false, foreign_key: true |
+| item                  | references | null: false, foreign_key: true |
+| user                  | references | null: false, foreign_key: true |
 
 ### アソシエーション
 
