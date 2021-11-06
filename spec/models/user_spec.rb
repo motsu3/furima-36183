@@ -107,22 +107,22 @@ RSpec.describe User, type: :model do
       it "苗字（全角）に半角文字が含まれていると登録できない" do
         @user.last_name = '山ﾀﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include()
+        expect(@user.errors.full_messages).to include("Last name is invalid")
       end
       it "苗字（全角）に半角文字が含まれていると登録できない" do
         @user.first_name = '太ﾛｳ'
         @user.valid?
-        expect(@user.errors.full_messages).to include()
+        expect(@user.errors.full_messages).to include("First name is invalid")
       end
       it "苗字（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない " do
         @user.last_name_kana = '山da'
         @user.valid?
-        expect(@user.errors.full_messages).to include()
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
       end
       it "名前（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない" do
         @user.first_name_kana = '太rou'
         @user.valid?
-        expect(@user.errors.full_messages).to include()
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
       end
     end
   end
